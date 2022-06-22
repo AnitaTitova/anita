@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace ylpr
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = 0;
+            for (int i = 1000; i <= 9999; i++)
+            {
+                if (i % 133 == 125 && i % 134 == 111)
+                    n += i;
+            }
+            Console.WriteLine(n);
+        }
+    }
+}
