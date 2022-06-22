@@ -1,0 +1,52 @@
+using System;
+namespace l
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите дату (в данном формате: 1 апреля 1900): ");
+            var data = Console.ReadLine().ToString().Split(new char[] { ' ' },
+            StringSplitOptions.RemoveEmptyEntries);
+            string[] month = { "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
+"августа", "сентября", "октября", "ноября", "декабря" };
+            uint a = Convert.ToUInt32(data[0]);
+            string b = data[1];
+            uint c = Convert.ToUInt32(data[2]);
+            uint D = 0;
+            uint[] day = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            uint[] visokosniy = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+            for (int i = 0; i < 12; i++)
+            {
+                if ((c % 4 == 0 && c % 100 != 0) || (c % 400 == 0))
+                {
+                    if (b == month[i])
+                    {
+                        if (a > 0 && a <= visokosniy[i])
+                        {
+                            uint x = D + a;
+                            uint y = 366 - (D + a);
+                            Console.WriteLine($"Корректная дата\n{x}\n{y}");
+                        }
+                        else Console.WriteLine("Некорректная дата");
+                    }
+                    D = D + visokosniy[i];
+                }
+                else
+                {
+                    if (b == month[i])
+                    {
+                        if (a > 0 && a <= day[i])
+                        {
+                            uint x = D + a;
+                            uint y = 365 - (D + a);
+                            Console.WriteLine($"Корректная дата\n{x}\n{y}");
+                        }
+                        else Console.WriteLine("Некорректная дата");
+                    }
+                    D = D + day[i];
+                }
+            }
+        }
+    }
+}
