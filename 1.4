@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace Factorial
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int s;
+            int F = 1;
+            Console.WriteLine("Введите число");
+            s = int.Parse(Console.ReadLine());
+            for (int c = s; c > 1; c--)
+                F = F * c;
+            Console.WriteLine("Факториал = " + F);
+            Console.ReadLine();
+        }
+    }
+}
