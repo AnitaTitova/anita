@@ -1,0 +1,43 @@
+using System;
+namespace ulpr11
+{
+    class Class
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите верхнюю границу");
+            int n = int.Parse(Console.ReadLine());
+        way:
+            Console.WriteLine("Введите количество попыток(не более 10)");
+            int p = int.Parse(Console.ReadLine());
+            if (p == 0)
+            {
+                Console.WriteLine("Ошибка, количество должно быть больше 0");
+                goto way;
+            }
+            Random r = new Random();
+            int z = r.Next(1, n);
+            for (int i = 0; i < p; i++)
+            {
+                Console.WriteLine("Введите число");
+                int s = int.Parse(Console.ReadLine());
+                if (s > z)
+                {
+                    Console.WriteLine("Меньше");
+                }
+                if (s < z)
+                {
+                    Console.WriteLine("Больше");
+                }
+                if (s == z)
+                {
+                    Console.WriteLine("Вы угадали");
+                    goto win;
+                }
+            }
+            Console.WriteLine("Попытки закончились");
+        win:
+            Console.WriteLine("Игра окончена");
+        }
+    }
+}
